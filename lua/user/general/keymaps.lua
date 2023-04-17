@@ -56,6 +56,15 @@ keymap("n", "<leader>n", ":NvimTreeToggle <CR>", opts) -- Open Navbar
 -- Undo Tree
 keymap("n", "<leader>u", ":UndotreeToggle <CR>", opts) -- Open Navbar
 
+
+local builtin = require('telescope.builtin')
+
+vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+-- vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+vim.keymap.set('n', '<leader>ps',function()
+	builtin.grep_string({ search = vim.fn.input("Grep > ") });
+end)
+
 -- Telescope
 keymap("n", "<C-p>", "<cmd>Telescope find_files hidden=true<CR>", opts)
 keymap("n", "<C-f>", "<cmd>Telescope live_grep<CR>", opts)
