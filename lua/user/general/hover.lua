@@ -1,4 +1,3 @@
-require("user")
 local set_hl_for_floating_window = function()
   vim.api.nvim_set_hl(0, 'NormalFloat', {
     link = 'Normal',

@@ -42,6 +42,7 @@ return require("packer").startup(function(use)
 	-- Colors
 	use({ "lennox-davidlevy/warlock_transparent" })
 	use({ "Shatur/neovim-ayu" })
+	use({ "KimNorgaard/vim-frign" })
 
 	-- Treesitter and Tree
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })

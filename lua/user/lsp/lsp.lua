@@ -30,6 +30,4 @@ require("fidget").setup({})
 --   end,
 -- })
 
--- (Optional) Configure lua language server for neovim
-
 lsp.setup()

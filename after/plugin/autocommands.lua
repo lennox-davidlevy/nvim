@@ -48,3 +48,7 @@ vim.cmd([[
 --     autocmd CmdlineEnter /,\? set hlsearch
 --     autocmd CmdlineLeave /,\? set nohlsearch
 -- augroup END
+
+-- augroup JsonToJsonc
+--     autocmd! FileType json set filetype=jsonc
+-- augroup END
