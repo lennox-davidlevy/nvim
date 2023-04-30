@@ -43,7 +43,6 @@ vim.cmd([[
     autocmd colorscheme * hi IncSearch guifg=#FFFF00 guibg=NONE gui=bold
   augroup END
 
-
   augroup _auto_resize
     autocmd!
     autocmd VimResized * tabdo wincmd =
