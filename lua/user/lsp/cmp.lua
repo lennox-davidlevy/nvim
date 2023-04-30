@@ -16,6 +16,13 @@ cmp.setup({
 	completion = {
 		completeopt = "menu,menuone,noinsert",
 	},
+	sources = {
+		{ name = "nvim_lsp", max_item_count = 5, keyword_length = 2 },
+		{ name = "luasnip", max_item_count = 5, keyword_length = 2 },
+		{ name = "buffer", max_item_count = 5, keyword_length = 2 },
+		{ name = "path", max_item_count = 5, keyword_length = 2 },
+		{ name = "nvim_lua", max_item_count = 5, keyword_length = 2 },
+	},
 	mapping = {
 		["<C-k>"] = cmp.mapping.select_prev_item(),
 		["<C-j>"] = cmp.mapping.select_next_item(),

@@ -5,7 +5,7 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 --remove inline messages and underline
-vim.diagnostic.config({ virtual_text = false, underline = true })
+vim.diagnostic.config({ virtual_text = false, underline = false })
 --short message
 vim.opt.shortmess = vim.opt.shortmess + "c"
 
@@ -29,7 +29,5 @@ require("fidget").setup({})
 --     print("hello emmet")
 --   end,
 -- })
-
--- (Optional) Configure lua language server for neovim
 
 lsp.setup()

@@ -27,7 +27,7 @@ end
 
 configs.setup({
 	ensure_installed = {
-    "html",
+		"html",
 		"javascript",
 		"typescript",
 		"tsx",
@@ -38,11 +38,10 @@ configs.setup({
 		"rust",
 		"bash",
 		"go",
-    "python",
-    "yaml"
+		"python",
+		"yaml",
 	}, -- one of "all" or a list of languages
 	ignore_install = { "" }, -- List of parsers to ignore installing
-	additional_vim_regex_highlighting = false,
 	-- auto_install = true,
 	highlight = {
 		enable = true, -- false will disable the whole extension
@@ -54,5 +53,6 @@ configs.setup({
 	autotag = {
 		enable = true,
 	},
-	indent = { enable = true, disable = { "python", "css", "yaml" } },
+	indent = { enable = true, disable = { "python", "css", "yaml", "rust" } },
+	additional_vim_regex_highlighting = false,
 })
