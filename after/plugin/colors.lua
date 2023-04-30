@@ -1,5 +1,5 @@
 function ColorScheme(color)
-	color = { color or "ayu-dark" }
+	color = { color or "farout" }
 	vim.cmd.colorscheme(color)
 end
 
