@@ -1,3 +1,4 @@
+-- Snippets too annoying
 require("lspconfig").emmet_ls.setup({
   filetypes = {
     "html",

@@ -7,6 +7,11 @@ return require("packer").startup(function(use)
 	-- Packer can manage itself
 	use({ "wbthomason/packer.nvim" })
 
+	-- Frontend
+
+	use({ "ec965/mjml-preview.nvim" })
+	use({ "ap/vim-css-color" })
+
 	-- functional
 	use({
 		"windwp/nvim-autopairs",
