@@ -53,6 +53,6 @@ configs.setup({
 	autotag = {
 		enable = true,
 	},
-	indent = { enable = true, disable = { "python", "css", "yaml", "rust" } },
+	indent = { enable = true, disable = { "css", "yaml", "rust" } },
 	additional_vim_regex_highlighting = false,
 })
