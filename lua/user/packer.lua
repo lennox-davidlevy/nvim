@@ -8,9 +8,7 @@ return require("packer").startup(function(use)
 	use({ "wbthomason/packer.nvim" })
 
 	-- Frontend
-
-	use({ "ec965/mjml-preview.nvim" })
-	use({ "ap/vim-css-color" })
+	use({ "brenoprata10/nvim-highlight-colors" })
 
 	-- functional
 	use({
@@ -54,7 +52,8 @@ return require("packer").startup(function(use)
 
 	-- Treesitter and Tree
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
-	use({ "kyazdani42/nvim-tree.lua" })
+	use({ "kyazdani42/nvim-tree.lua", commit='f5d970d4506f385b29534252d8c15a782fa53034' })
+	-- use({ "kyazdani42/nvim-tree.lua", commit='034511714bacfadc5008e49f73fcef67e5613840' })
 
 	--Markdown
 	use({

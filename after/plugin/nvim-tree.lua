@@ -135,7 +135,7 @@ nvim_tree.setup({
 			error = "",
 		},
 	},
-	on_attach = on_attach,
+	-- on_attach = on_attach,
 	view = {
 		width = 40,
 		side = "left",
