@@ -1,5 +1,5 @@
 function ColorScheme(color)
-	color = { color or "gruvbox-material" }
+	color = { color or "tokyonight-night" }
 	vim.cmd.colorscheme(color)
 end
 

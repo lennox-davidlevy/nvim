@@ -27,8 +27,11 @@ return require("packer").startup(function(use)
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 
+	-- Frontend
+	use({ "brenoprata10/nvim-highlight-colors" })
+
 	-- Rust
-	use("simrat39/rust-tools.nvim")
+	use({ "simrat39/rust-tools.nvim" })
 	use({ "j-hui/fidget.nvim" })
 
 	-- Git

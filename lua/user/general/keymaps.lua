@@ -66,7 +66,7 @@ vim.keymap.set('n', '<leader>ps',function()
 end)
 
 -- Telescope
-keymap("n", "<C-p>", "<cmd>Telescope find_files hidden=true<CR>", opts)
+keymap("n", "<C-p>", "<cmd>Telescope git_files hidden=true<CR>", opts)
 keymap("n", "<C-f>", "<cmd>Telescope live_grep<CR>", opts)
 keymap(
 	"n",
@@ -74,7 +74,8 @@ keymap(
 	"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<CR>",
 	opts
 )
-keymap("n", "<leader>c", "<cmd>Telescope colorscheme<CR>", opts)
+keymap("n", "<leader>cs", "<cmd>Telescope colorscheme<CR>", opts)
+keymap("n", "<leader>ct", "<cmd>lua require 'nvim-highlight-colors'.toggle()<CR>", opts)
 
 -- CMP
 keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
