@@ -17,7 +17,8 @@ require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 require("lspconfig").terraformls.setup({})
 require("lspconfig").sqlls.setup({})
 require("lspconfig").dockerls.setup({})
-require("lspconfig").pyright.setup({})
+-- require("lspconfig").pyright.setup({})
+require("lspconfig").pylsp.setup({})
 require("fidget").setup({})
 
 -- require("lspconfig").emmet_ls.setup({
