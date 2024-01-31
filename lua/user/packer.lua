@@ -32,7 +32,7 @@ return require("packer").startup(function(use)
 
 	-- Rust
 	use("simrat39/rust-tools.nvim")
-	use({ "j-hui/fidget.nvim" })
+	-- use({ "j-hui/fidget.nvim" })
 
 	-- Git
 	use({ "tpope/vim-fugitive" })
@@ -96,6 +96,9 @@ return require("packer").startup(function(use)
 	})
 	use({ "jose-elias-alvarez/null-ls.nvim" })
 	use({ "rafamadriz/friendly-snippets" })
+
+	-- Java
+	use({ "mfussenegger/nvim-jdtls" })
 
 	-- Testing
 end)
