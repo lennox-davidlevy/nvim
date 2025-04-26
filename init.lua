@@ -1,5 +1,4 @@
--- vim.keymap.set('i', 'jk', '<Esc>', {noremap=true})
-
+-- Import my core utils
 require("core.options")
 require("core.keymaps")
 
