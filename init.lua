@@ -1,26 +1,7 @@
-vim.keymap.set('i', 'jk', '<Esc>', {noremap=true})
-vim.g.mapleader = ","
+-- vim.keymap.set('i', 'jk', '<Esc>', {noremap=true})
 
-local undodir = vim.fn.stdpath("config") .. "/.undodir"
-if vim.fn.isdirectory(undodir) == 0 then
-  vim.fn.mkdir(undodir, "p")
-end
-
-local options = {
-	clipboard = 'unnamedplus',
-	expandtab = true,
-	tabstop = 2,
-	softtabstop = 2,
-	shiftwidth = 2,
-	mouse = '',
-  undofile = true,
-  undodir = undodir
-}
-
-for k, v in pairs(options) do
-	vim.opt[k] = v
-end
-
+require("core.options")
+require("core.keymaps")
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -40,10 +21,3 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
-
-local builtin = require("telescope.builtin")
-vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>n', ':Neotree toggle <CR>', {})
-
-vim.cmd.colorscheme "gruvbox-material"
