@@ -1,5 +1,11 @@
 vim.g.mapleader = ","
 
+
+local undodir = vim.fn.stdpath("config") .. "/.undodir"
+if vim.fn.isdirectory(undodir) == 0 then
+  vim.fn.mkdir(undodir, "p")
+end
+
 local options = {
   -- style
   number = true,
@@ -29,9 +35,3 @@ for k, v in pairs(options) do
 end
 
 
-local undodir = vim.fn.stdpath("config") .. "/.undodir"
-if vim.fn.isdirectory(undodir) == 0 then
-  vim.fn.mkdir(undodir, "p")
-end
-
-print("Core options loaded...")
