@@ -2,8 +2,7 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- Escape sequence
-map('i', 'jk', '<Esc>', { noremap = true })
-
+map("i", "jk", "<Esc>", { noremap = true })
 
 -- Better window navigation
 map("n", "<C-h>", "<C-w>h", opts)
@@ -18,3 +17,7 @@ map("n", "<leader>v", ":vsp<CR> <C-w>l<CR>", opts)
 map("n", "tt", ":tab split<CR>", opts)
 map("n", "tr", ":tabc<CR>", opts)
 map("n", "<leader>o", ":on<CR>", opts)
+
+-- Navigate buffers
+map("n", "<leader>bn", ":bnext<CR>", opts)
+map("n", "<leader>bb", ":bprevious<CR>", opts)
