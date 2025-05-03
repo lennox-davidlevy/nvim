@@ -2,8 +2,7 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- Escape sequence
-map('i', 'jk', '<Esc>', { noremap = true })
-
+map("i", "jk", "<Esc>", { noremap = true })
 
 -- Better window navigation
 map("n", "<C-h>", "<C-w>h", opts)
