@@ -11,6 +11,7 @@ return {
 		dependencies = { "williamboman/mason.nvim" },
 		opts = {
 			ensure_installed = { "lua_ls", "bashls", "ts_ls" },
+      automatic_setup = false
 		},
 	},
 
@@ -55,6 +56,7 @@ return {
 			lspconfig.lua_ls.setup({})
 			lspconfig.bashls.setup({})
 			lspconfig.ts_ls.setup({})
+			-- lspconfig.pyright.setup({})
 		end,
 	},
 }
