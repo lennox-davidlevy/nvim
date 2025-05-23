@@ -27,7 +27,6 @@ return {
 			-- === Diagnostics ===
 			null_ls.builtins.diagnostics.dotenv_linter,
 			null_ls.builtins.diagnostics.pylint,
-      require("none-ls.diagnostics.eslint_d"),
 		}
 		null_ls.setup({
 			sources = sources,

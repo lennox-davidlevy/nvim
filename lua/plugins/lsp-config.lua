@@ -11,8 +11,13 @@ return {
 		dependencies = { "williamboman/mason.nvim" },
 		opts = {
 			ensure_installed = { "lua_ls", "bashls", "ts_ls" },
-      automatic_setup = false
 		},
+		config = function()
+			require("mason-lspconfig").setup({
+        -- conflicts with lsp.config.<lsp>, duplicates clients attached to buffer, disabled automatic enable for this reason
+				automatic_enable = false,
+			})
+		end,
 	},
 
 	-- nvim-lspconfig
@@ -56,7 +61,7 @@ return {
 			lspconfig.lua_ls.setup({})
 			lspconfig.bashls.setup({})
 			lspconfig.ts_ls.setup({})
-			-- lspconfig.pyright.setup({})
+			lspconfig.pyright.setup({})
 		end,
 	},
 }
