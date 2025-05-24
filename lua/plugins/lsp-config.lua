@@ -14,7 +14,7 @@ return {
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-        -- conflicts with lsp.config.<lsp>, duplicates clients attached to buffer, disabled automatic enable for this reason
+				-- conflicts with lsp.config.<lsp>, duplicates clients attached to buffer, disabled automatic enable for this reason
 				automatic_enable = false,
 			})
 		end,
@@ -28,6 +28,7 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 		},
 		config = function()
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			-- styling
 			local function setup_styling()
 				local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
@@ -58,10 +59,18 @@ return {
 
 			-- config
 			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup({})
-			lspconfig.bashls.setup({})
-			lspconfig.ts_ls.setup({})
-			lspconfig.pyright.setup({})
+			lspconfig.lua_ls.setup({
+        capabilities = capabilities
+      })
+			lspconfig.bashls.setup({
+        capabilities = capabilities
+      })
+			lspconfig.ts_ls.setup({
+        capabilities = capabilities
+      })
+			lspconfig.pyright.setup({
+        capabilities = capabilities
+      })
 		end,
 	},
 }
