@@ -22,8 +22,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 -- Colorscheme setup
-local my_colorscheme = "habamax" -- options: "gruvbox-material", "PaperColor", "kanagawa", "tokyonight", "ayu", "habamax"
--- local my_background_mode = "dark"
+local my_colorscheme = "gruvbox-material" -- options: "gruvbox-material", "PaperColor", "kanagawa", "tokyonight", "ayu", "habamax"
 
 local function set_colorscheme(scheme)
 	local success, _ = pcall(vim.cmd.colorscheme, scheme)

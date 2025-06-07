@@ -28,6 +28,25 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 		},
 		config = function()
+			local function set_hl_for_floating_window()
+				vim.api.nvim_set_hl(0, "NormalFloat", {
+					link = "Normal", -- Make float background the same as editor background
+				})
+				vim.api.nvim_set_hl(0, "FloatBorder", {
+					bg = "none", -- Make the border background transparent
+				})
+			end
+
+			-- 2. Apply the styling immediately on startup.
+			set_hl_for_floating_window()
+
+			-- 3. Create an autocommand to re-apply the styling whenever a colorscheme is loaded.
+			--    This prevents your settings from being overwritten by a theme.
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				pattern = "*",
+				desc = "Apply custom float styles after colorscheme loads",
+				callback = set_hl_for_floating_window,
+			})
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			-- styling
 			local function setup_styling()
@@ -60,17 +79,17 @@ return {
 			-- config
 			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({
-        capabilities = capabilities
-      })
+				capabilities = capabilities,
+			})
 			lspconfig.bashls.setup({
-        capabilities = capabilities
-      })
+				capabilities = capabilities,
+			})
 			lspconfig.ts_ls.setup({
-        capabilities = capabilities
-      })
+				capabilities = capabilities,
+			})
 			lspconfig.pyright.setup({
-        capabilities = capabilities
-      })
+				capabilities = capabilities,
+			})
 		end,
 	},
 }
