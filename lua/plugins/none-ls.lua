@@ -6,7 +6,7 @@ return {
 	config = function()
 		local null_ls = require("null-ls")
 
-    -- avoid formatting issues
+		-- avoid formatting issues
 		local function lsp_formatting(bufnr)
 			vim.lsp.buf.format({
 				filter = function(client)
