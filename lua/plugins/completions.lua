@@ -10,7 +10,8 @@ return {
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
-      "hrsh7th/cmp-path"
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-buffer",
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -27,8 +28,8 @@ return {
 					documentation = cmp.config.window.bordered(),
 				},
 				mapping = cmp.mapping.preset.insert({
-          ["<C-k>"] = cmp.mapping.select_prev_item(),
-          ["<C-j>"] = cmp.mapping.select_next_item(),
+					["<C-k>"] = cmp.mapping.select_prev_item(),
+					["<C-j>"] = cmp.mapping.select_next_item(),
 					["<C-n>"] = cmp.mapping.scroll_docs(-4),
 					["<C-p>"] = cmp.mapping.scroll_docs(4),
 					["<C-Space>"] = cmp.mapping.complete(),
@@ -38,6 +39,7 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp", max_item_count = 8 },
 					{ name = "luasnip", max_item_count = 8 },
+					{ name = "path", max_item_count = 8 },
 				}, {
 					{ name = "buffer" },
 				}),

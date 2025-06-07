@@ -20,3 +20,19 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
+
+-- Colorscheme setup
+local my_colorscheme = "kanagawa" -- options: "gruvbox-material", "PaperColor", "kanagawa", "ayu", "habamax", "oxocarbon", "taake", "yugen", "ashen"
+local my_background = "dark" -- options: "dark", "light"
+
+local function set_colorscheme(scheme, background)
+	local success, _ = pcall(vim.cmd.colorscheme, scheme)
+	vim.o.background = background
+
+	if not success then
+		vim.notify("Colorscheme '" .. scheme .. "' not found!", vim.log.levels.WARN)
+		return
+	end
+end
+
+set_colorscheme(my_colorscheme, my_background)

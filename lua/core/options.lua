@@ -12,6 +12,7 @@ local options = {
 	termguicolors = true,
 	cmdheight = 1,
 	showmode = false,
+  wrap = false,
 
 	-- functionality
 	ignorecase = true,
