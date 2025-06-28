@@ -19,20 +19,20 @@ return {
 
 		local sources = {
 			-- === Formatting ===
-			null_ls.builtins.formatting.stylua,
-			null_ls.builtins.formatting.prettierd,
-			null_ls.builtins.formatting.black,
-			null_ls.builtins.formatting.isort,
+			-- null_ls.builtins.formatting.stylua,
+			-- null_ls.builtins.formatting.prettierd,
+			-- null_ls.builtins.formatting.black,
+			-- null_ls.builtins.formatting.isort,
 
 			-- === Diagnostics ===
 			null_ls.builtins.diagnostics.dotenv_linter,
-			null_ls.builtins.diagnostics.pylint,
+			require("none-ls.diagnostics.ruff")
 		}
 		null_ls.setup({
 			sources = sources,
 		})
-		vim.keymap.set("n", "<leader>gf", function()
-			lsp_formatting(vim.api.nvim_get_current_buf())
-		end)
+		-- vim.keymap.set("n", "<leader>gf", function()
+		-- 	lsp_formatting(vim.api.nvim_get_current_buf())
+		-- end)
 	end,
 }

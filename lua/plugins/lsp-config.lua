@@ -28,26 +28,27 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 		},
 		config = function()
-			local function set_hl_for_floating_window()
-				vim.api.nvim_set_hl(0, "NormalFloat", {
-					link = "Normal", -- make float background the same as editor background
-				})
-				vim.api.nvim_set_hl(0, "FloatBorder", {
-					bg = "none", -- make the border background transparent
-				})
-			end
-
-			set_hl_for_floating_window()
-
-			-- create an autocommand to apply the styling whenever a colorscheme is loaded.
-			-- this prevents my settings from being overwritten by a theme.
-			vim.api.nvim_create_autocmd("ColorScheme", {
-				pattern = "*",
-				desc = "Apply custom float styles after colorscheme loads",
-				callback = set_hl_for_floating_window,
-			})
+			-- local function set_hl_for_floating_window()
+			-- 	vim.api.nvim_set_hl(0, "NormalFloat", {
+			-- 		link = "Normal", -- make float background the same as editor background
+			-- 	})
+			-- 	vim.api.nvim_set_hl(0, "FloatBorder", {
+			-- 		bg = "none", -- make the border background transparent
+			-- 	})
+			-- end
+			--
+			-- set_hl_for_floating_window()
+			--
+			-- -- create an autocommand to apply the styling whenever a colorscheme is loaded.
+			-- -- this prevents my settings from being overwritten by a theme.
+			-- vim.api.nvim_create_autocmd("ColorScheme", {
+			-- 	pattern = "*",
+			-- 	desc = "Apply custom float styles after colorscheme loads",
+			-- 	callback = set_hl_for_floating_window,
+			-- })
 
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      -- capabilities.offsetEncoding = { "utf-16" }
 
 			-- styling
 			local function setup_styling()
@@ -66,6 +67,7 @@ return {
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { silent = true, desc = "Show Code Action" })
+				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { silent = true, desc = "Rename variables" })
 				vim.keymap.set(
 					"n",
 					"<leader>e",
@@ -76,6 +78,33 @@ return {
 
 			setup_styling()
 			setup_keymaps()
+
+			-- this is a function to fix the vim.lsp.buf.rename issue in python files while using pyright.
+			local function create_pyright_handlers()
+				local function fix_workspace_edit(workspace_edit)
+					if workspace_edit and workspace_edit.documentChanges then
+						for _, change in ipairs(workspace_edit.documentChanges) do
+							if change.edits then
+								for _, edit in ipairs(change.edits) do
+									if edit.annotationId and not workspace_edit.changeAnnotations then
+										edit.annotationId = nil
+									end
+								end
+							end
+						end
+					end
+					return workspace_edit
+				end
+
+				return {
+					["textDocument/rename"] = function(err, result, ctx, config)
+						if result and result.documentChanges then
+							result = fix_workspace_edit(result)
+						end
+						vim.lsp.handlers["textDocument/rename"](err, result, ctx, config)
+					end,
+				}
+			end
 
 			-- config
 			local lspconfig = require("lspconfig")
@@ -88,7 +117,28 @@ return {
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 			})
+			-- lspconfig.pyright.setup({
+			-- 	capabilities = capabilities,
+			-- 	handlers = create_pyright_handlers(),
+			-- 	analysis = {
+			-- 		ignore = { "*" },
+			-- 	},
+			-- })
 			lspconfig.pyright.setup({
+				capabilities = capabilities,
+				handlers = create_pyright_handlers(),
+				settings = {
+					python = {
+						analysis = {
+							ignore = { "*" },
+							autoSearchPaths = true,
+							diagnosticMode = "openFilesOnly",
+							useLibraryCodeForTypes = true,
+						}
+					}
+				},
+			})
+			lspconfig.jsonls.setup({
 				capabilities = capabilities,
 			})
 		end,
