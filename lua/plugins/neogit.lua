@@ -1,15 +1,37 @@
 return {
 	"NeogitOrg/neogit",
 	dependencies = {
-		"nvim-lua/plenary.nvim", -- required
-		"sindrets/diffview.nvim", -- optional - Diff integration
-		"nvim-telescope/telescope.nvim", -- optional
+		"nvim-lua/plenary.nvim",
+		"sindrets/diffview.nvim",
+		"nvim-telescope/telescope.nvim",
 	},
 	keys = {
 		-- diffview
-		{ "<leader>df", "<cmd>DiffviewOpen<cr>", mode = "n", desc = "Open Diffview" },
+		{ "<leader>dv", "<cmd>DiffviewOpen<cr>", mode = "n", desc = "Open Diffview" },
 		{ "<leader>dc", "<cmd>DiffviewClose<cr>", mode = "n", desc = "Close Diffview" },
+		{ "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", mode = "n", desc = "File history (this file)" },
+		{ "<leader>gH", "<cmd>DiffviewFileHistory<cr>", mode = "n", desc = "Project history" },
+
+		-- diff‐mode navigation & ops (only when &diff is set)
+		{
+			"<leader>dh",
+			"<cmd>lua if vim.wo.diff then vim.cmd('normal! ]c') end<cr>",
+			mode = "n",
+			desc = "Next diff hunk",
+		},
+		{
+			"<leader>dH",
+			"<cmd>lua if vim.wo.diff then vim.cmd('normal! [c') end<cr>",
+			mode = "n",
+			desc = "Prev diff hunk",
+		},
+		{ "<leader>gd", "<cmd>diffget //2<cr>", mode = "n", desc = "Get hunk from other buffer" },
+		{ "<leader>gD", "<cmd>diffput //2<cr>", mode = "n", desc = "Put hunk to other buffer" },
+
 		-- neogit
-		{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Open Neogit" },
+		{ "<leader>gg", "<cmd>Neogit<cr>", mode = "n", desc = "Open Neogit" },
+		{ "<leader>gc", "<cmd>Neogit commit<cr>", mode = "n", desc = "Neogit: commit" },
+		{ "<leader>gp", "<cmd>Neogit pull<cr>", mode = "n", desc = "Neogit: pull" },
+		{ "<leader>gP", "<cmd>Neogit push<cr>", mode = "n", desc = "Neogit: push" },
 	},
 }
