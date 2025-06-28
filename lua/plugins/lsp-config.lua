@@ -116,6 +116,12 @@ return {
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 			})
+			lspconfig.jsonls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.marksman.setup({
+				capabilities = capabilities,
+			})
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
 				handlers = create_pyright_handlers(),
@@ -129,9 +135,6 @@ return {
 						},
 					},
 				},
-			})
-			lspconfig.jsonls.setup({
-				capabilities = capabilities,
 			})
 			lspconfig.bashls.setup({
 				capabilities = capabilities,
