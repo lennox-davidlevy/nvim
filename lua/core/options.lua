@@ -13,6 +13,7 @@ local options = {
 	cmdheight = 1,
 	showmode = false,
   wrap = false,
+  hlsearch = false,
 
 	-- functionality
 	ignorecase = true,

@@ -19,5 +19,8 @@ map("n", "tr", ":tabc<CR>", opts)
 map("n", "<leader>o", ":on<CR>", opts)
 
 -- Navigate buffers
-map("n", "<leader>bn", ":bnext<CR>", opts)
-map("n", "<leader>bb", ":bprevious<CR>", opts)
+-- map("n", "<leader>bn", ":bnext<CR>", opts)
+-- map("n", "<leader>bb", ":bprevious<CR>", opts)
+
+-- Turn of highlight on search
+map("n", "<CR>", ":nohlsearch<CR><CR>", opts)

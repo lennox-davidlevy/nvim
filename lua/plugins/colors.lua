@@ -1,11 +1,11 @@
 return {
 	{
-		"sainnhe/gruvbox-material",
+		"morhetz/gruvbox",
 		lazy = false,
 		priority = 1000,
 	},
 	{
-		"NLKNguyen/papercolor-theme",
+		"sainnhe/gruvbox-material",
 		lazy = false,
 		priority = 1000,
 	},
@@ -15,28 +15,14 @@ return {
 		priority = 1000,
 	},
 	{
-		"nyoom-engineering/oxocarbon.nvim",
-		lazy = false,
-		priority = 1000,
-	},
-	{
-		"rebelot/kanagawa.nvim",
-		lazy = false,
-		priority = 1000,
-	},
-	{
 		"metalelf0/black-metal-theme-neovim",
 		lazy = false,
 		priority = 1000,
 	},
 	{
-		"bettervim/yugen.nvim",
+		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
-	},
-	{
-		"ficcdaf/ashen.nvim",
-		lazy = false,
-		priority = 1000,
+		opts = {},
 	},
 }
