@@ -23,4 +23,4 @@ map("n", "<leader>o", ":on<CR>", opts)
 -- map("n", "<leader>bb", ":bprevious<CR>", opts)
 
 -- Turn of highlight on search
-map("n", "<CR>", ":nohlsearch<CR><CR>", opts)
+vim.keymap.set("n", "<CR>", "<Cmd>nohlsearch<CR>", { noremap = true, silent = true })
