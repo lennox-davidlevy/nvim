@@ -25,6 +25,8 @@ return {
 				json = { "prettierd" },
 				yaml = { "prettierd" },
 				markdown = { "prettierd" },
+				zsh = { "shfmt" },
+				sh = { "shfmt" },
 			},
 
 			format_on_save = nil,

@@ -28,27 +28,26 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 		},
 		config = function()
-			-- local function set_hl_for_floating_window()
-			-- 	vim.api.nvim_set_hl(0, "NormalFloat", {
-			-- 		link = "Normal", -- make float background the same as editor background
-			-- 	})
-			-- 	vim.api.nvim_set_hl(0, "FloatBorder", {
-			-- 		bg = "none", -- make the border background transparent
-			-- 	})
-			-- end
-			--
-			-- set_hl_for_floating_window()
-			--
-			-- -- create an autocommand to apply the styling whenever a colorscheme is loaded.
-			-- -- this prevents my settings from being overwritten by a theme.
-			-- vim.api.nvim_create_autocmd("ColorScheme", {
-			-- 	pattern = "*",
-			-- 	desc = "Apply custom float styles after colorscheme loads",
-			-- 	callback = set_hl_for_floating_window,
-			-- })
+			local function set_hl_for_floating_window()
+				vim.api.nvim_set_hl(0, "NormalFloat", {
+					link = "Normal", -- make float background the same as editor background
+				})
+				vim.api.nvim_set_hl(0, "FloatBorder", {
+					bg = "none", -- make the border background transparent
+				})
+			end
+
+			set_hl_for_floating_window()
+
+			-- create an autocommand to apply the styling whenever a colorscheme is loaded.
+			-- this prevents my settings from being overwritten by a theme.
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				pattern = "*",
+				desc = "Apply custom float styles after colorscheme loads",
+				callback = set_hl_for_floating_window,
+			})
 
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      -- capabilities.offsetEncoding = { "utf-16" }
 
 			-- styling
 			local function setup_styling()
@@ -117,13 +116,6 @@ return {
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 			})
-			-- lspconfig.pyright.setup({
-			-- 	capabilities = capabilities,
-			-- 	handlers = create_pyright_handlers(),
-			-- 	analysis = {
-			-- 		ignore = { "*" },
-			-- 	},
-			-- })
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
 				handlers = create_pyright_handlers(),
@@ -134,12 +126,21 @@ return {
 							autoSearchPaths = true,
 							diagnosticMode = "openFilesOnly",
 							useLibraryCodeForTypes = true,
-						}
-					}
+						},
+					},
 				},
 			})
 			lspconfig.jsonls.setup({
 				capabilities = capabilities,
+			})
+			lspconfig.bashls.setup({
+				capabilities = capabilities,
+				filetypes = { "bash", "sh", "zsh" },
+				settings = {
+					bashIde = {
+						globPattern = "*@(.sh|.inc|.bash|.command|.zsh)",
+					},
+				},
 			})
 		end,
 	},
