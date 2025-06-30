@@ -107,14 +107,19 @@ return {
 
 			-- config
 			local lspconfig = require("lspconfig")
+
 			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.bashls.setup({
 				capabilities = capabilities,
 			})
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
+			})
+			lspconfig.cssls.setup({
+				capabilities = capabilities,
+				settings = {
+					css = { validate = true },
+					scss = { validate = true },
+				},
 			})
 			lspconfig.jsonls.setup({
 				capabilities = capabilities,
