@@ -23,4 +23,8 @@ map("n", "<leader>o", ":on<CR>", opts)
 -- map("n", "<leader>bb", ":bprevious<CR>", opts)
 
 -- Turn of highlight on search
-vim.keymap.set("n", "<CR>", "<Cmd>nohlsearch<CR>", { noremap = true, silent = true })
+map("n", "<CR>", "<Cmd>nohlsearch<CR>", { noremap = true, silent = true })
+
+-- Stay in indent mode
+map("v", "<", "<gv")
+map("v", ">", ">gv")

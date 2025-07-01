@@ -36,3 +36,6 @@ parser/
 # System files
 .DS_Store
 Thumbs.db
+
+# Opencode
+.opencode/
