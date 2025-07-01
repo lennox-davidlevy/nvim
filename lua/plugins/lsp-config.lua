@@ -124,6 +124,30 @@ return {
 			lspconfig.jsonls.setup({
 				capabilities = capabilities,
 			})
+			-- lspconfig.pylsp.setup({
+			-- 	capabilities = capabilities,
+			-- 	settings = {
+			-- 		pylsp = {
+			-- 			plugins = {
+			-- 				pycodestyle = { enabled = false },
+			-- 				flake8 = { enabled = false },
+			-- 				pyflakes = { enabled = false },
+			-- 				mccabe = { enabled = false },
+			-- 				pylint = { enabled = false },
+			-- 				pydocstyle = { enabled = false },
+			-- 				autopep8 = { enabled = false },
+			-- 				yapf = { enabled = false },
+			--            -- for completions
+			-- 				jedi_completion = { enabled = true },
+			-- 				jedi_definition = { enabled = true },
+			-- 				jedi_hover = { enabled = true },
+			-- 				jedi_references = { enabled = true },
+			-- 				jedi_signature_help = { enabled = true },
+			-- 				jedi_symbols = { enabled = true },
+			-- 			},
+			-- 		},
+			-- 	},
+			-- })
 			lspconfig.marksman.setup({
 				capabilities = capabilities,
 			})
@@ -144,11 +168,6 @@ return {
 			lspconfig.bashls.setup({
 				capabilities = capabilities,
 				filetypes = { "bash", "sh", "zsh" },
-				settings = {
-					bashIde = {
-						globPattern = "*@(.sh|.inc|.bash|.command|.zsh)",
-					},
-				},
 			})
 		end,
 	},
