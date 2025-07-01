@@ -36,9 +36,16 @@ return {
 						"--search-parent-directories",
 						"--stdin-filepath",
 						"$FILENAME",
-						"-", -- read from stdin
+						"-",
 					},
 				},
+				-- prettierd = {
+				-- 	args = {
+				-- 		"--stdin-filepath",
+				-- 		"$FILENAME",
+				-- 		"--double-quote",
+				-- 	},
+				-- },
 			},
 		})
 
@@ -46,7 +53,7 @@ return {
 		vim.keymap.set({ "n", "v" }, "<leader>gf", function()
 			conform.format({
 				timeout_ms = 1000,
-				lsp_format = true,
+				lsp_format = "fallback",
 				async = false,
 			})
 		end, { desc = "Format buffer [conform]" })
