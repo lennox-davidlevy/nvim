@@ -1,8 +1,14 @@
 return {
 	{
-		"morhetz/gruvbox",
-		lazy = false,
+		"ellisonleao/gruvbox.nvim",
 		priority = 1000,
+		config = true,
+		opts = ...,
+	},
+	{
+		"sainnhe/gruvbox-material",
+		priority = 1000,
+		lazy = false,
 	},
 	{
 		"sainnhe/gruvbox-material",

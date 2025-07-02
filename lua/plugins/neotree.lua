@@ -1,15 +1,15 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",
-	priority = 1000,
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"MunifTanjim/nui.nvim",
-	},
+	cmd = "Neotree",
 	keys = {
 		{ "<leader>n", "<cmd>Neotree toggle<CR>", desc = "Toggle NeoTree" },
 	},
-	lazy = false,
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"nvim-tree/nvim-web-devicons",
+		"MunifTanjim/nui.nvim",
+	},
 	config = function()
 		local neotree = require("neo-tree")
 		local command = require("neo-tree.command")
