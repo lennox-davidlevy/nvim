@@ -76,6 +76,22 @@ return {
 					vim.diagnostic.open_float,
 					{ silent = true, desc = "Show Line Diagnostics" }
 				)
+
+				-- Navigate diagnostics/errors
+				-- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { silent = true, desc = "Next diagnostic" })
+				-- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { silent = true, desc = "Previous diagnostic" })
+				-- vim.keymap.set("n", "]e", function()
+				-- 	vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+				-- end, { silent = true, desc = "Next error" })
+				-- vim.keymap.set("n", "[e", function()
+				-- 	vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+				-- end, { silent = true, desc = "Previous error" })
+				-- vim.keymap.set("n", "]w", function()
+				-- 	vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.WARN })
+				-- end, { silent = true, desc = "Next warning" })
+				-- vim.keymap.set("n", "[w", function()
+				-- 	vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.WARN })
+				-- end, { silent = true, desc = "Previous warning" })
 			end
 
 			setup_styling()
