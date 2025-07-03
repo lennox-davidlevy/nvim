@@ -6,13 +6,23 @@ return {
 		config = true,
 	},
 
-	-- mason-lspconfig
 	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "williamboman/mason.nvim" },
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
-			ensure_installed = { "lua_ls", "bashls", "ts_ls" },
+			ensure_installed = {
+				"lua_ls",
+				"bashls",
+				"ts_ls",
+				"marksman",
+				"pylsp",
+				"jsonls",
+				"prettierd",
+				"ruff",
+				"stylua",
+        "shfmt"
+			},
 		},
 		config = function()
 			require("mason-lspconfig").setup({

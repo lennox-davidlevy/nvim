@@ -3,17 +3,12 @@ return {
 		"ellisonleao/gruvbox.nvim",
 		priority = 1000,
 		config = true,
-		opts = ...,
+		opts = {},
 	},
 	{
 		"sainnhe/gruvbox-material",
 		priority = 1000,
 		lazy = false,
-	},
-	{
-		"sainnhe/gruvbox-material",
-		lazy = false,
-		priority = 1000,
 	},
 	{
 		"ayu-theme/ayu-vim",

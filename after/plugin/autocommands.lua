@@ -27,7 +27,7 @@ vim.cmd([[
     autocmd colorscheme * hi DiagnosticSignWarn guifg=#ff2800 
     autocmd colorscheme * hi! link DiagnosticSignHint Normal
     autocmd colorscheme * hi DiagnosticSignHint guifg=#FBFBFB 
-    autocmd colorscheme * hi! link DDiagnosticSignInfo Normal
+    autocmd colorscheme * hi! link DiagnosticSignInfo Normal
     autocmd colorscheme * hi DiagnosticSignInfo guifg=#FBFBFB
     autocmd colorscheme * hi! link GitGutterAdd Normal
     autocmd colorscheme * hi GitGutterAdd guifg=#ffb000
