@@ -12,7 +12,7 @@ return {
 		conform.setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
-				python = { "ruff_organize_imports", "ruff_format" },
+				python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
 				toml = { "pyproject-fmt" },
 				javascript = { "prettierd" },
 				typescript = { "prettierd" },

@@ -34,3 +34,6 @@ local options = {
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
+
+-- Suppress deprecation warnings
+vim.deprecate = function() end

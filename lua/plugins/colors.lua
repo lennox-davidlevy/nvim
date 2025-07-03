@@ -1,13 +1,14 @@
 return {
 	{
-		"morhetz/gruvbox",
-		lazy = false,
+		"ellisonleao/gruvbox.nvim",
 		priority = 1000,
+		config = true,
+		opts = {},
 	},
 	{
 		"sainnhe/gruvbox-material",
-		lazy = false,
 		priority = 1000,
+		lazy = false,
 	},
 	{
 		"ayu-theme/ayu-vim",

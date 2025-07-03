@@ -9,6 +9,18 @@ return {
 			{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find Buffers" },
 			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Find Help" },
 			{ "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Find Theme" },
+
+			-- LSP/Diagnostics
+			{ "<leader>fd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Find Diagnostics (Buffer)" },
+			{ "<leader>fD", "<cmd>Telescope diagnostics<cr>", desc = "Find Diagnostics (Workspace)" },
+			{ "<leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "Find References" },
+			{ "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Find Symbols" },
+			{ "<leader>fS", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Find Workspace Symbols" },
+
+			-- Git
+			{ "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Git Commits" },
+			{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
+			{ "<leader>gS", "<cmd>Telescope git_stash<cr>", desc = "Git Stash" },
 		},
 		config = function()
 			local telescope = require("telescope")

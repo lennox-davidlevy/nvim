@@ -2,15 +2,27 @@ return {
 	-- mason
 	{
 		"williamboman/mason.nvim",
+		cmd = "Mason",
 		config = true,
 	},
 
-	-- mason-lspconfig
 	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "williamboman/mason.nvim" },
+		event = { "BufReadPre", "BufNewFile" },
 		opts = {
-			ensure_installed = { "lua_ls", "bashls", "ts_ls" },
+			ensure_installed = {
+				"lua_ls",
+				"bashls",
+				"ts_ls",
+				"marksman",
+				"pylsp",
+				"jsonls",
+				"prettierd",
+				"ruff",
+				"stylua",
+        "shfmt"
+			},
 		},
 		config = function()
 			require("mason-lspconfig").setup({
@@ -23,6 +35,7 @@ return {
 	-- nvim-lspconfig
 	{
 		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
@@ -55,8 +68,8 @@ return {
 				function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 					opts = opts or {}
 					opts.border = opts.border or "rounded"
-					opts.max_width = opts.max_width or 80
-					opts.max_height = opts.max_height or 20
+					opts.max_width = opts.max_width or 100
+					opts.max_height = opts.max_height or 30
 					return orig_util_open_floating_preview(contents, syntax, opts, ...)
 				end
 			end
@@ -73,40 +86,35 @@ return {
 					vim.diagnostic.open_float,
 					{ silent = true, desc = "Show Line Diagnostics" }
 				)
+
+				-- Navigate diagnostics/errors
+				-- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { silent = true, desc = "Next diagnostic" })
+				-- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { silent = true, desc = "Previous diagnostic" })
+				-- vim.keymap.set("n", "]e", function()
+				-- 	vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+				-- end, { silent = true, desc = "Next error" })
+				-- vim.keymap.set("n", "[e", function()
+				-- 	vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+				-- end, { silent = true, desc = "Previous error" })
+				-- vim.keymap.set("n", "]w", function()
+				-- 	vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.WARN })
+				-- end, { silent = true, desc = "Next warning" })
+				-- vim.keymap.set("n", "[w", function()
+				-- 	vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.WARN })
+				-- end, { silent = true, desc = "Previous warning" })
 			end
 
 			setup_styling()
 			setup_keymaps()
 
-			-- this is a function to fix the vim.lsp.buf.rename issue in python files while using pyright.
-			local function create_pyright_handlers()
-				local function fix_workspace_edit(workspace_edit)
-					if workspace_edit and workspace_edit.documentChanges then
-						for _, change in ipairs(workspace_edit.documentChanges) do
-							if change.edits then
-								for _, edit in ipairs(change.edits) do
-									if edit.annotationId and not workspace_edit.changeAnnotations then
-										edit.annotationId = nil
-									end
-								end
-							end
-						end
-					end
-					return workspace_edit
-				end
-
-				return {
-					["textDocument/rename"] = function(err, result, ctx, config)
-						if result and result.documentChanges then
-							result = fix_workspace_edit(result)
-						end
-						vim.lsp.handlers["textDocument/rename"](err, result, ctx, config)
-					end,
-				}
-			end
-
 			-- config
 			local lspconfig = require("lspconfig")
+
+			local function on_attach(client, bufnr)
+				if client.name ~= "null-ls" then
+					client.server_capabilities.publishDiagnostics = false
+				end
+			end
 
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
@@ -124,31 +132,37 @@ return {
 			lspconfig.jsonls.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.marksman.setup({
+			lspconfig.pylsp.setup({
 				capabilities = capabilities,
-			})
-			lspconfig.pyright.setup({
-				capabilities = capabilities,
-				handlers = create_pyright_handlers(),
+				on_attach = on_attach,
 				settings = {
-					python = {
-						analysis = {
-							ignore = { "*" },
-							autoSearchPaths = true,
-							diagnosticMode = "openFilesOnly",
-							useLibraryCodeForTypes = true,
+					pylsp = {
+						plugins = {
+							pycodestyle = { enabled = false },
+							flake8 = { enabled = false },
+							pyflakes = { enabled = false },
+							mccabe = { enabled = false },
+							pylint = { enabled = false },
+							pydocstyle = { enabled = false },
+							autopep8 = { enabled = false },
+							yapf = { enabled = false },
+							-- for completions
+							jedi_completion = { enabled = true },
+							jedi_definition = { enabled = true },
+							jedi_hover = { enabled = true },
+							jedi_references = { enabled = true },
+							jedi_signature_help = { enabled = true },
+							jedi_symbols = { enabled = true },
 						},
 					},
 				},
 			})
+			lspconfig.marksman.setup({
+				capabilities = capabilities,
+			})
 			lspconfig.bashls.setup({
 				capabilities = capabilities,
 				filetypes = { "bash", "sh", "zsh" },
-				settings = {
-					bashIde = {
-						globPattern = "*@(.sh|.inc|.bash|.command|.zsh)",
-					},
-				},
 			})
 		end,
 	},
