@@ -9,9 +9,6 @@ return {
 		-- diffview
 		{ "<leader>dv", "<cmd>DiffviewOpen<cr>", mode = "n", desc = "Open Diffview" },
 		{ "<leader>dc", "<cmd>DiffviewClose<cr>", mode = "n", desc = "Close Diffview" },
-		{ "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", mode = "n", desc = "File history (this file)" },
-		{ "<leader>gH", "<cmd>DiffviewFileHistory<cr>", mode = "n", desc = "Project history" },
-
 		-- diff‐mode navigation & ops (only when &diff is set)
 		{
 			"<leader>dh",
