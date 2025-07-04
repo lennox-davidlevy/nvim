@@ -21,7 +21,10 @@ return {
 				"prettierd",
 				"ruff",
 				"stylua",
-        "shfmt"
+				"shfmt",
+				"taplo",
+        "pyproject-fmt",
+        "yamlls"
 			},
 		},
 		config = function()
@@ -87,7 +90,7 @@ return {
 					{ silent = true, desc = "Show Line Diagnostics" }
 				)
 
-				-- Navigate diagnostics/errors
+				-- Navigate diagnostics/errors may implement later
 				-- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { silent = true, desc = "Next diagnostic" })
 				-- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { silent = true, desc = "Previous diagnostic" })
 				-- vim.keymap.set("n", "]e", function()
@@ -158,6 +161,12 @@ return {
 				},
 			})
 			lspconfig.marksman.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.taplo.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.yamlls.setup({
 				capabilities = capabilities,
 			})
 			lspconfig.bashls.setup({
