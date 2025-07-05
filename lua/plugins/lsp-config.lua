@@ -135,27 +135,42 @@ return {
 			lspconfig.jsonls.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.pylsp.setup({
+			-- lspconfig.pylsp.setup({
+			-- 	capabilities = capabilities,
+			-- 	on_attach = on_attach,
+			-- 	settings = {
+			-- 		pylsp = {
+			-- 			plugins = {
+			-- 				pycodestyle = { enabled = false },
+			-- 				flake8 = { enabled = false },
+			-- 				pyflakes = { enabled = false },
+			-- 				mccabe = { enabled = false },
+			-- 				pylint = { enabled = false },
+			-- 				pydocstyle = { enabled = false },
+			-- 				autopep8 = { enabled = false },
+			-- 				yapf = { enabled = false },
+			-- 				-- for completions
+			-- 				jedi_completion = { enabled = true },
+			-- 				jedi_definition = { enabled = true },
+			-- 				jedi_hover = { enabled = true },
+			-- 				jedi_references = { enabled = true },
+			-- 				jedi_signature_help = { enabled = true },
+			-- 				jedi_symbols = { enabled = true },
+			-- 			},
+			-- 		},
+			-- 	},
+			-- })
+			lspconfig.basedpyright.setup({
 				capabilities = capabilities,
-				on_attach = on_attach,
 				settings = {
-					pylsp = {
-						plugins = {
-							pycodestyle = { enabled = false },
-							flake8 = { enabled = false },
-							pyflakes = { enabled = false },
-							mccabe = { enabled = false },
-							pylint = { enabled = false },
-							pydocstyle = { enabled = false },
-							autopep8 = { enabled = false },
-							yapf = { enabled = false },
-							-- for completions
-							jedi_completion = { enabled = true },
-							jedi_definition = { enabled = true },
-							jedi_hover = { enabled = true },
-							jedi_references = { enabled = true },
-							jedi_signature_help = { enabled = true },
-							jedi_symbols = { enabled = true },
+					basedpyright = {
+						disableOrganizeImports = true,
+						analysis = {
+							typeCheckingMode = "basic",
+							reportMissingTypeStubs = false,
+							reportAny = false,
+							reportUndefinedVariable = true,
+							reportAttributeAccessIssue = true,
 						},
 					},
 				},
