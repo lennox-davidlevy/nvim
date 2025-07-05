@@ -6,7 +6,7 @@ return {
 		local lualine = require("lualine")
 		lualine.setup({
 			options = {
-				theme = "ayu",
+				theme = "auto",
 			},
 			extensions = {
 				"neo-tree",
