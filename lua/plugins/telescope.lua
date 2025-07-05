@@ -30,29 +30,45 @@ return {
 				defaults = {
 					mappings = {
 						i = {
-							["qq"] = actions.close,
+							-- ["qq"] = actions.close,
+							["<CR>"] = function(prompt_bufnr)
+								local selection = require("telescope.actions.state").get_selected_entry()
+								if selection then
+									actions.select_default(prompt_bufnr)
+								else
+									actions.close(prompt_bufnr)
+								end
+							end,
 						},
 						n = {
 							["q"] = actions.close,
+							["<CR>"] = function(prompt_bufnr)
+								local selection = require("telescope.actions.state").get_selected_entry()
+								if selection then
+									actions.select_default(prompt_bufnr)
+								else
+									actions.close(prompt_bufnr)
+								end
+							end,
 						},
 					},
 				},
 			})
 		end,
 	},
-	{
-		"nvim-telescope/telescope-ui-select.nvim",
-		config = function()
-			require("telescope").setup({
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown({
-							-- even more opts
-						}),
-					},
-				},
-			})
-			require("telescope").load_extension("ui-select")
-		end,
-	},
+	-- {
+	-- 	"nvim-telescope/telescope-ui-select.nvim",
+	-- 	config = function()
+	-- 		require("telescope").setup({
+	-- 			extensions = {
+	-- 				["ui-select"] = {
+	-- 					require("telescope.themes").get_dropdown({
+	-- 						-- even more opts
+	-- 					}),
+	-- 				},
+	-- 			},
+	-- 		})
+	-- 		require("telescope").load_extension("ui-select")
+	-- 	end,
+	-- },
 }

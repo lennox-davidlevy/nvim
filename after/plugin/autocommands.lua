@@ -59,4 +59,9 @@ vim.cmd([[
     au BufWinEnter * silent! loadview
   augroup end
 
+  " augroup _auto_cd_git_root
+  "   autocmd!
+  "   autocmd BufEnter * lua require('core.utils').auto_cd_git_root()
+  " augroup end
+
 ]])

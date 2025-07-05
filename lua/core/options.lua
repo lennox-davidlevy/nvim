@@ -14,6 +14,7 @@ local options = {
 	showmode = false,
   wrap = false,
   hlsearch = false,
+  showtabline = 0,
 
 	-- functionality
 	ignorecase = true,
