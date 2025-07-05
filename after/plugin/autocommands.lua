@@ -38,9 +38,13 @@ vim.cmd([[
     autocmd colorscheme * hi! link GitGutterChangeDelete Normal
     autocmd colorscheme * hi GitGutterChangeDelete guifg=#ffb000
     autocmd colorscheme * hi MatchParen guibg=NONE guifg=#FFFF00 gui=bold
-    autocmd colorscheme * hi Visual guibg=#000000 guifg=#ffb000 gui=reverse
+    " autocmd colorscheme * hi Visual guibg=#000000 guifg=#ffb000 gui=reverse
+    autocmd colorscheme * hi Visual guibg=#000000 guifg=#ffb000
     autocmd colorscheme * hi Search guifg=#FFFF00 guibg=NONE 
     autocmd colorscheme * hi IncSearch guifg=#FFFF00 guibg=NONE gui=bold
+    autocmd colorscheme * hi TelescopeSelection guibg=#000000 guifg=#ffb000
+    autocmd colorscheme * hi TelescopeSelectionCaret guibg=#000000 guifg=#ffb000
+    autocmd colorscheme * hi TelescopeMultiSelection guibg=#000000 guifg=#ffb000
   augroup END
 
   augroup _auto_resize
