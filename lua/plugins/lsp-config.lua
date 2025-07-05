@@ -23,8 +23,8 @@ return {
 				"stylua",
 				"shfmt",
 				"taplo",
-        "pyproject-fmt",
-        "yamlls"
+				"pyproject-fmt",
+				"yamlls",
 			},
 		},
 		config = function()
@@ -168,6 +168,16 @@ return {
 			})
 			lspconfig.yamlls.setup({
 				capabilities = capabilities,
+				settings = {
+					yaml = {
+						format = {
+							enable = true,
+						},
+						schemaStore = {
+							enable = true,
+						},
+					},
+				},
 			})
 			lspconfig.bashls.setup({
 				capabilities = capabilities,
