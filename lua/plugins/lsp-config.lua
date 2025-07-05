@@ -16,8 +16,8 @@ return {
 					"basedpyright",
 					"bashls",
 					"cssls",
-          "dockerls",
-          "docker_compose_language_service",
+					"dockerls",
+					"docker_compose_language_service",
 					"jsonls",
 					"lua_ls",
 					"marksman",
@@ -109,7 +109,7 @@ return {
 			lspconfig.jsonls.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.basedpyright.setup({
+			require("lspconfig").basedpyright.setup({
 				capabilities = capabilities,
 				settings = {
 					basedpyright = {
@@ -120,6 +120,11 @@ return {
 							reportAny = false,
 							reportUndefinedVariable = true,
 							reportAttributeAccessIssue = true,
+							useLibraryCodeForTypes = true,
+
+							diagnosticSeverityOverrides = {
+								reportUnusedImport = "none",
+							},
 						},
 					},
 				},
