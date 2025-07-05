@@ -16,17 +16,13 @@ return {
 				lualine_b = { "branch" },
 				lualine_c = {
 					{
-						"filename",
-						file_status = true,
-						newfile_status = false,
-						path = 0, -- 0: Just the filename, 1: Relative path, 2: Absolute path, 3: Absolute path with ~ for home
-						shorting_target = 40,
-						symbols = {
-							modified = " ●",
-							readonly = " ",
-							unnamed = "[No Name]",
-							newfile = "[New]",
-						},
+						function()
+							local filepath = vim.fn.expand("%:p")
+							if filepath == "" then return "[No Name]" end
+							local filename = vim.fn.fnamemodify(filepath, ":t")
+							local parent = vim.fn.fnamemodify(filepath, ":h:t")
+							return parent .. "/" .. filename
+						end,
 						color = { fg = "#000000", bg = "#ffff00", gui = "bold" },
 					},
 				},
