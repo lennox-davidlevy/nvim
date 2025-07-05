@@ -10,27 +10,21 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "williamboman/mason.nvim" },
 		event = { "BufReadPre", "BufNewFile" },
-		opts = {
-			ensure_installed = {
-				"lua_ls",
-				"bashls",
-				"ts_ls",
-				"marksman",
-				"pylsp",
-				"jsonls",
-				"prettierd",
-				"ruff",
-				"stylua",
-				"shfmt",
-				"taplo",
-				"pyproject-fmt",
-				"yamlls",
-			},
-		},
 		config = function()
 			require("mason-lspconfig").setup({
-				-- conflicts with lsp.config.<lsp>, duplicates clients attached to buffer, disabled automatic enable for this reason
+				ensure_installed = {
+					"basedpyright",
+					"bashls",
+					"cssls",
+					"jsonls",
+					"lua_ls",
+					"marksman",
+					"taplo",
+					"ts_ls",
+					"yamlls",
+				},
 				automatic_enable = false,
+				automatic_installation = true,
 			})
 		end,
 	},
@@ -147,10 +141,12 @@ return {
 					},
 				},
 			})
-			lspconfig.bashls.setup({
-				capabilities = capabilities,
-				filetypes = { "bash", "sh", "zsh" },
-			})
-		end,
+		lspconfig.bashls.setup({
+			capabilities = capabilities,
+			filetypes = { "bash", "sh", "zsh" },
+		})
+		lspconfig.dockerls.setup({
+			capabilities = capabilities,
+		})		end,
 	},
 }
