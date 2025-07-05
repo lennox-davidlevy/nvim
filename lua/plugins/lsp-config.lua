@@ -16,6 +16,8 @@ return {
 					"basedpyright",
 					"bashls",
 					"cssls",
+          "dockerls",
+          "docker_compose_language_service",
 					"jsonls",
 					"lua_ls",
 					"marksman",
@@ -141,12 +143,16 @@ return {
 					},
 				},
 			})
-		lspconfig.bashls.setup({
-			capabilities = capabilities,
-			filetypes = { "bash", "sh", "zsh" },
-		})
-		lspconfig.dockerls.setup({
-			capabilities = capabilities,
-		})		end,
+			lspconfig.bashls.setup({
+				capabilities = capabilities,
+				filetypes = { "bash", "sh", "zsh" },
+			})
+			lspconfig.dockerls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.docker_compose_language_service.setup({
+				capabilities = capabilities,
+			})
+		end,
 	},
 }

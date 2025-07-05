@@ -57,4 +57,11 @@ vim.cmd([[
     autocmd VimEnter * hi WinSeparator cterm=bold gui=bold guifg=#d7ffd7
   augroup end
 
+  augroup docker_compose_ft
+    autocmd!
+    " on new or read buffers matching any of those filenames…
+    autocmd BufRead,BufNewFile docker-compose.{yml,yaml},compose.{yml,yaml}
+          \ setfiletype yaml.docker-compose
+  augroup END
+
 ]])
