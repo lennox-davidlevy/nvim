@@ -23,7 +23,7 @@ return {
 				scss = { "prettierd" },
 				html = { "prettierd" },
 				json = { "prettierd" },
-				yaml = { "prettierd" },
+				-- yaml = { "prettierd" },
 				markdown = { "prettierd" },
 				zsh = { "shfmt" },
 				sh = { "shfmt" },
