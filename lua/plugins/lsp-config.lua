@@ -10,27 +10,21 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "williamboman/mason.nvim" },
 		event = { "BufReadPre", "BufNewFile" },
-		opts = {
-			ensure_installed = {
-				"lua_ls",
-				"bashls",
-				"ts_ls",
-				"marksman",
-				"pylsp",
-				"jsonls",
-				"prettierd",
-				"ruff",
-				"stylua",
-				"shfmt",
-				"taplo",
-				"pyproject-fmt",
-				"yamlls",
-			},
-		},
 		config = function()
 			require("mason-lspconfig").setup({
-				-- conflicts with lsp.config.<lsp>, duplicates clients attached to buffer, disabled automatic enable for this reason
+				ensure_installed = {
+					"basedpyright",
+					"bashls",
+					"cssls",
+					"jsonls",
+					"lua_ls",
+					"marksman",
+					"taplo",
+					"ts_ls",
+					"yamlls",
+				},
 				automatic_enable = false,
+				automatic_installation = true,
 			})
 		end,
 	},
@@ -89,22 +83,6 @@ return {
 					vim.diagnostic.open_float,
 					{ silent = true, desc = "Show Line Diagnostics" }
 				)
-
-				-- Navigate diagnostics/errors may implement later
-				-- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { silent = true, desc = "Next diagnostic" })
-				-- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { silent = true, desc = "Previous diagnostic" })
-				-- vim.keymap.set("n", "]e", function()
-				-- 	vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
-				-- end, { silent = true, desc = "Next error" })
-				-- vim.keymap.set("n", "[e", function()
-				-- 	vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
-				-- end, { silent = true, desc = "Previous error" })
-				-- vim.keymap.set("n", "]w", function()
-				-- 	vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.WARN })
-				-- end, { silent = true, desc = "Next warning" })
-				-- vim.keymap.set("n", "[w", function()
-				-- 	vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.WARN })
-				-- end, { silent = true, desc = "Previous warning" })
 			end
 
 			setup_styling()
@@ -112,12 +90,6 @@ return {
 
 			-- config
 			local lspconfig = require("lspconfig")
-
-			local function on_attach(client, bufnr)
-				if client.name ~= "null-ls" then
-					client.server_capabilities.publishDiagnostics = false
-				end
-			end
 
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
@@ -135,31 +107,6 @@ return {
 			lspconfig.jsonls.setup({
 				capabilities = capabilities,
 			})
-			-- lspconfig.pylsp.setup({
-			-- 	capabilities = capabilities,
-			-- 	on_attach = on_attach,
-			-- 	settings = {
-			-- 		pylsp = {
-			-- 			plugins = {
-			-- 				pycodestyle = { enabled = false },
-			-- 				flake8 = { enabled = false },
-			-- 				pyflakes = { enabled = false },
-			-- 				mccabe = { enabled = false },
-			-- 				pylint = { enabled = false },
-			-- 				pydocstyle = { enabled = false },
-			-- 				autopep8 = { enabled = false },
-			-- 				yapf = { enabled = false },
-			-- 				-- for completions
-			-- 				jedi_completion = { enabled = true },
-			-- 				jedi_definition = { enabled = true },
-			-- 				jedi_hover = { enabled = true },
-			-- 				jedi_references = { enabled = true },
-			-- 				jedi_signature_help = { enabled = true },
-			-- 				jedi_symbols = { enabled = true },
-			-- 			},
-			-- 		},
-			-- 	},
-			-- })
 			lspconfig.basedpyright.setup({
 				capabilities = capabilities,
 				settings = {
@@ -194,10 +141,12 @@ return {
 					},
 				},
 			})
-			lspconfig.bashls.setup({
-				capabilities = capabilities,
-				filetypes = { "bash", "sh", "zsh" },
-			})
-		end,
+		lspconfig.bashls.setup({
+			capabilities = capabilities,
+			filetypes = { "bash", "sh", "zsh" },
+		})
+		lspconfig.dockerls.setup({
+			capabilities = capabilities,
+		})		end,
 	},
 }

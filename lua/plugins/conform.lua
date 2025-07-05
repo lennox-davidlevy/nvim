@@ -23,7 +23,6 @@ return {
 				scss = { "prettierd" },
 				html = { "prettierd" },
 				json = { "prettierd" },
-				-- yaml = { "prettierd" },
 				markdown = { "prettierd" },
 				zsh = { "shfmt" },
 				sh = { "shfmt" },
@@ -39,13 +38,6 @@ return {
 						"-",
 					},
 				},
-				-- prettierd = {
-				-- 	args = {
-				-- 		"--stdin-filepath",
-				-- 		"$FILENAME",
-				-- 		"--double-quote",
-				-- 	},
-				-- },
 			},
 		})
 

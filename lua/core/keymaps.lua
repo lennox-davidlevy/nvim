@@ -18,10 +18,6 @@ map("n", "tt", ":tab split<CR>", opts)
 map("n", "tr", ":tabc<CR>", opts)
 map("n", "<leader>o", ":on<CR>", opts)
 
--- Navigate buffers
--- map("n", "<leader>bn", ":bnext<CR>", opts)
--- map("n", "<leader>bb", ":bprevious<CR>", opts)
-
 -- Turn of highlight on search
 map("n", "<CR>", "<Cmd>nohlsearch<CR>", { noremap = true, silent = true })
 
