@@ -30,10 +30,26 @@ return {
 				defaults = {
 					mappings = {
 						i = {
-							["qq"] = actions.close,
+							-- ["qq"] = actions.close,
+							["<CR>"] = function(prompt_bufnr)
+								local selection = require("telescope.actions.state").get_selected_entry()
+								if selection then
+									actions.select_default(prompt_bufnr)
+								else
+                  return
+								end
+							end,
 						},
 						n = {
 							["q"] = actions.close,
+							["<CR>"] = function(prompt_bufnr)
+								local selection = require("telescope.actions.state").get_selected_entry()
+								if selection then
+									actions.select_default(prompt_bufnr)
+								else
+                  return
+								end
+							end,
 						},
 					},
 				},

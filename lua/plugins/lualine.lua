@@ -6,23 +6,20 @@ return {
 		local lualine = require("lualine")
 		lualine.setup({
 			options = {
-				theme = "gruvbox",
-				component_separators = { left = "|", right = "|" },
-				section_separators = { left = "|", right = "|" },
+				theme = "ayu",
 			},
 			extensions = {
 				"neo-tree",
 			},
 			sections = {
 				lualine_a = { "mode" },
-				-- lualine_b = { "branch", "diff", "diagnostics" },
 				lualine_b = { "branch" },
 				lualine_c = {
 					{
 						"filename",
 						file_status = true,
 						newfile_status = false,
-						path = 1, -- 0: Just the filename, 1: Relative path, 2: Absolute path, 3: Absolute path with ~ for home
+						path = 0, -- 0: Just the filename, 1: Relative path, 2: Absolute path, 3: Absolute path with ~ for home
 						shorting_target = 40,
 						symbols = {
 							modified = " ●",
@@ -30,7 +27,7 @@ return {
 							unnamed = "[No Name]",
 							newfile = "[New]",
 						},
-						color = { fg = "#ebdbb2", gui = "bold" }, -- Gruvbox light foreground, bold
+						color = { fg = "#000000", bg = "#ffff00", gui = "bold" },
 					},
 				},
 				lualine_x = { "fileformat", "filetype" },

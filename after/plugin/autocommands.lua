@@ -53,10 +53,4 @@ vim.cmd([[
     autocmd VimEnter * hi WinSeparator cterm=bold gui=bold guifg=#d7ffd7
   augroup end
 
-  augroup _saveFolds
-    autocmd!
-    au BufWinLeave * silent! mkview
-    au BufWinEnter * silent! loadview
-  augroup end
-
 ]])
