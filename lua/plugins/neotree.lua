@@ -51,6 +51,21 @@ return {
 					enabled = false,
 				},
 			},
+			filesystem = {
+				components = {
+					name = function(config, node, state)
+						local name = require("neo-tree.sources.filesystem.components").name(config, node, state)
+						if node.type == "directory" then
+							name.highlight = "NeoTreeDirectoryName"
+						end
+						return name
+					end,
+				},
+			},
 		})
+
+		-- Set brighter directory colors
+		vim.api.nvim_set_hl(0, "NeoTreeDirectoryName", { fg = "#56B6C2" })
+		vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { fg = "#56B6C2" })
 	end,
 }
