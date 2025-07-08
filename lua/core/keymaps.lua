@@ -1,9 +1,6 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- Set localleader to comma (same as leader for convenience)
-vim.g.maplocalleader = ","
-
 -- Escape sequence
 map("i", "jk", "<Esc>", { noremap = true })
 

@@ -64,9 +64,4 @@ vim.cmd([[
           \ setfiletype yaml.docker-compose
   augroup END
 
-  " augroup jupyter_notebook_ft
-  "   autocmd!
-  "   autocmd BufRead,BufNewFile *.ipynb setfiletype markdown
-  " augroup END
-
 ]])
