@@ -26,6 +26,7 @@ local options = {
 	softtabstop = 2,
 	shiftwidth = 2,
 	mouse = "",
+  swapfile = false,
 
 	-- undo tree
 	undofile = true,
