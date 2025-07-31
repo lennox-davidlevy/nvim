@@ -11,6 +11,7 @@ return {
 			"typescript",
 			"json",
 			"html",
+			"css",
 			"yaml",
 			"bash",
 			"markdown",

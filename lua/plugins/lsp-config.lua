@@ -21,6 +21,8 @@ return {
 					"jsonls",
 					"lua_ls",
 					"marksman",
+					"ruff",
+					"tailwindcss",
 					"taplo",
 					"ts_ls",
 					"yamlls",
@@ -157,6 +159,25 @@ return {
 			})
 			lspconfig.docker_compose_language_service.setup({
 				capabilities = capabilities,
+			})
+			lspconfig.tailwindcss.setup({
+				capabilities = capabilities,
+				filetypes = { "typescriptreact", "javascriptreact", "css", "scss", "html" },
+				settings = {
+					tailwindCSS = {
+						classAttributes = { "class", "className" },
+						lint = {
+							cssConflict = "warning",
+							invalidApply = "error",
+							invalidConfigPath = "error",
+							invalidScreen = "error",
+							invalidTailwindDirective = "error",
+							invalidVariant = "error",
+							recommendedVariantOrder = "warning"
+						},
+						validate = true
+					}
+				}
 			})
 		end,
 	},
