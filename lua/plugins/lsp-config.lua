@@ -18,9 +18,11 @@ return {
 					"cssls",
 					"dockerls",
 					"docker_compose_language_service",
+          "html",
 					"jsonls",
 					"lua_ls",
 					"marksman",
+          "tailwindcss",
 					"taplo",
 					"ts_ls",
 					"yamlls",
@@ -135,19 +137,15 @@ return {
 			lspconfig.taplo.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.yamlls.setup({
-				capabilities = capabilities,
-				settings = {
-					yaml = {
-						format = {
-							enable = true,
-						},
-						schemaStore = {
-							enable = true,
-						},
-					},
-				},
-			})
+      lspconfig.yamlls.setup({
+        capabilities = capabilities
+      })
+      lspconfig.html.setup({
+        capabilities = capabilities
+      })
+      lspconfig.tailwindcss.setup({
+        capabilities = capabilities
+      })
 			lspconfig.bashls.setup({
 				capabilities = capabilities,
 				filetypes = { "bash", "sh", "zsh" },

@@ -12,9 +12,9 @@ local options = {
 	termguicolors = true,
 	cmdheight = 1,
 	showmode = false,
-  wrap = false,
-  hlsearch = false,
-  showtabline = 0,
+	wrap = false,
+	hlsearch = false,
+	showtabline = 0,
 
 	-- functionality
 	ignorecase = true,
@@ -26,6 +26,7 @@ local options = {
 	softtabstop = 2,
 	shiftwidth = 2,
 	mouse = "",
+	swapfile = false,
 
 	-- undo tree
 	undofile = true,
