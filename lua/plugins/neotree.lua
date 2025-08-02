@@ -52,6 +52,10 @@ return {
 				},
 			},
 			filesystem = {
+				follow_current_file = {
+					enabled = true,
+					leave_dirs_open = false,
+				},
 				components = {
 					name = function(config, node, state)
 						local name = require("neo-tree.sources.filesystem.components").name(config, node, state)
