@@ -26,6 +26,7 @@ return {
 				markdown = { "prettierd" },
 				zsh = { "shfmt" },
 				sh = { "shfmt" },
+				rust = { "rustfmt" },
 			},
 
 			format_on_save = nil,

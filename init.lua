@@ -22,7 +22,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 -- Colorscheme setup
-local my_colorscheme = "ayu" -- options: "gruvbox-material", "gruvbox", "ayu", "bathory", "habamax", "taake", "yugen", "ashen"
+local my_colorscheme = "everforest" -- options: "gruvbox-material", "gruvbox", "ayu", "bathory", "habamax", "taake", "yugen", "ashen", "everforest"
 local my_background = "dark" -- options: "dark", "light"
 
 local function set_colorscheme(scheme, background)
